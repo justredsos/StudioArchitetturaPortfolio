@@ -138,12 +138,8 @@ nav ul li a:hover, nav ul li a.active { color: var(--accent); }
     .mobile-only .btn-header { display: inline-block; }
 }
 
-/* ==========================================================================
-   AGGIUNTE PER SOTTOPAGINE (Chi Siamo e Competenze) 
-   Senza modificare il contenuto precedente
-   ========================================================================== */
 
-/* Banner superiore per sottopagine (come nel link dello studio legale) */
+
 .page-header-banner {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200') center/cover;
