@@ -1,0 +1,368 @@
+/* ==========================================================================
+   STILI GENERALI (Tua Base Originale - Invariata)
+   ========================================================================== */
+:root {
+    --primary: #1a1a1a;
+    --accent: #3b5bdb; 
+    --text: #444;
+    --light: #f8f9fa;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden; 
+    background-color: var(--white);
+}
+
+.container { width: 85%; max-width: 1100px; margin: auto; }
+
+/* Header */
+header {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.header-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 1px;
+    z-index: 2100;
+}
+
+.logo span { color: var(--accent); }
+
+/* Menu Navigazione */
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    margin: 0; 
+    padding: 0;
+    align-items: center;
+}
+
+nav ul li { margin-left: 25px; }
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li a.active { color: var(--accent); }
+
+/* Pulsanti */
+.btn-header {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 22px;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-header:hover { background: var(--accent); transform: translateY(-2px); }
+
+/* ==========================================================================
+   RESPONSIVE LOGIC (Invariata)
+   ========================================================================== */
+
+.hamburger {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 2100;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.mobile-only { display: none; }
+
+@media (max-width: 992px) {
+    .hamburger { display: flex; }
+    header .btn-header { display: none; }
+
+    nav ul {
+        position: fixed;
+        right: -100%; 
+        top: 0;
+        height: 100vh;
+        width: 80%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px); 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    nav ul.active { right: 0; }
+    nav ul li { margin: 15px 0; margin-left: 0; }
+    nav ul li a { font-size: 20px; font-weight: 600; }
+    
+    .mobile-only { display: block; margin-top: 20px; }
+    .mobile-only .btn-header { display: inline-block; }
+}
+
+/* ==========================================================================
+   AGGIUNTE PER SOTTOPAGINE (Chi Siamo e Competenze) 
+   Senza modificare il contenuto precedente
+   ========================================================================== */
+
+/* Banner superiore per sottopagine (come nel link dello studio legale) */
+.page-header-banner {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200') center/cover;
+    padding: 100px 0;
+    text-align: center;
+    color: var(--white);
+}
+
+.page-header-banner h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 42px; 
+    margin-bottom: 10px; 
+}
+
+/* Sezione Storia/Intro (2 Colonne) */
+.section-padding { padding: 80px 0; }
+.intro-grid { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 60px; 
+    align-items: center; 
+}
+
+.intro-img img { 
+    width: 100%; 
+    border-radius: 4px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+}
+
+/* RIQUADRI DEL TEAM (Stile Professionale Architetto) */
+.team-section-bg { background-color: #f9f9f9; padding: 80px 0; }
+
+/* ==========================================================================
+   FIX RIQUADRI TEAM (Migliorato per non tagliare le persone)
+   ========================================================================== */
+
+.team-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+    margin-top: 50px;
+}
+
+.team-card-box { 
+    background: var(--white); 
+    border: 1px solid #eee; 
+    transition: 0.4s ease-in-out; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenitore Immagine con proporzione fissa (3:4 - Ritratto) */
+.team-img-wrapper { 
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Mantiene un rettangolo perfetto proporzionato */
+    overflow: hidden;
+    background-color: #f0f0f0; /* Colore di fondo se l'immagine carica lenta */
+}
+
+.team-img-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Riempie il box senza deformare */
+    object-position: top center; /* FOCALIZZA SULLA PARTE ALTA (VISO) PER NON TAGLIARE TESTE */
+    filter: grayscale(100%); 
+    transition: 0.6s ease; 
+    display: block;
+}
+
+.team-card-box:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    border-color: var(--accent);
+}
+
+.team-card-box:hover .team-img-wrapper img { 
+    filter: grayscale(0%); 
+    transform: scale(1.03); 
+}
+
+.team-info { 
+    padding: 25px; 
+    text-align: center;
+    flex-grow: 1; /* Fa sì che tutti i box abbiano la stessa altezza se il testo varia */
+}
+
+.team-info h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 22px; 
+    margin: 0 0 8px 0; 
+    color: var(--primary);
+}
+
+.team-info .role { 
+    color: var(--accent); 
+    font-size: 13px; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    letter-spacing: 1.5px;
+}
+/* SCHEDE COMPETENZE (Con Bottone come nel link) */
+.grid-container { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    padding: 60px 0; 
+}
+
+.service-box { 
+    padding: 40px; 
+    border: 1px solid #eee; 
+    text-align: center; 
+    background: var(--white); 
+    transition: 0.3s; 
+}
+
+.service-box .icon { font-size: 45px; margin-bottom: 20px; display: block; }
+
+.btn-service {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-service:hover { background: var(--accent); }
+
+/* ==========================================================================
+   RESTO DELLE SEZIONI (Tua Base Originale - Invariata)
+   ========================================================================== */
+
+.hero-home {
+    height: 75vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+.hero-overlay h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(32px, 5vw, 55px); 
+    margin-bottom: 15px; 
+    line-height: 1.2;
+}
+
+.btn-main { 
+    background: var(--accent); 
+    color: #fff; 
+    padding: 18px 40px; 
+    text-decoration: none; 
+    margin-top: 25px; 
+    display: inline-block;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.location-section { padding: 100px 0; background-color: #fafafa; }
+.grid-location { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: stretch; }
+
+.hours-card { 
+    background: #fff; 
+    padding: 45px; 
+    box-shadow: 0 15px 45px rgba(0,0,0,0.05); 
+    border-radius: 8px; 
+    border-top: 5px solid var(--accent); 
+}
+
+.hour-row { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 12px 0; 
+    border-bottom: 1px solid #f0f0f0; 
+    font-size: 15px; 
+}
+
+.map-box { 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    min-height: 400px;
+}
+.map-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.contact-full { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.btn-huge {
+    background: var(--primary);
+    color: #fff;
+    padding: 35px 70px;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 3px;
+    transition: 0.4s;
+    border: 3px solid var(--primary);
+    display: inline-block;
+}
+
+/* Animazione Hamburger Toggle */
+.hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-6px, 6px); }
+.hamburger.toggle span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-6px, -6px); }
+
+/* Media Queries Finali */
+@media (max-width: 992px) {
+    .grid-container, .team-grid, .intro-grid { grid-template-columns: 1fr !important; gap: 30px; }
+    .intro-grid { text-align: center; }
+}
+
+@media (max-width: 768px) {
+    .grid-location { grid-template-columns: 1fr !important; }
+}
